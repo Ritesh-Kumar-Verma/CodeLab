@@ -30,6 +30,7 @@ export default function CodeEditor() {
         setOutput(res.data.output);
       }
     } catch (err) {
+      console.log(err)
       setIsError(true);
       setOutput("An error occurred while executing the code.");
     }
@@ -59,6 +60,19 @@ export default function CodeEditor() {
         >
           Run
         </button>
+        {/* Language Selector */}
+<div className="flex items-center gap-3 mb-3">
+  <label className="text-white font-medium">Language:</label>
+
+  <select
+    value={language}
+    onChange={(e) => setLanguage(e.target.value)}
+    className="bg-gray-800 text-white px-3 py-2 rounded border border-gray-600"
+  >
+    <option value="python">Python</option>
+    <option value="c">C</option>
+  </select>
+</div>
 
         {/* Toggle between Old (Stacked) and New (Side-by-Side) UI */}
         <button
@@ -143,7 +157,7 @@ export default function CodeEditor() {
             <Editor
               height="70vh"
               language={language}
-              defaultValue={`print("Hello CodeForge")`}
+              defaultValue={``}
               theme="vs-dark"
               onChange={(code) => setCode(code || "")}
               options={{
