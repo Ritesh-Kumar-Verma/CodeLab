@@ -12,5 +12,5 @@ const apiClient = axios.create({
 
 
 export const codeAPI={
-    run: (code,language)=>apiClient.post('/run',{code,language})
+    run: (code,language)=>apiClient.post('/api/run',{code,language})
 }
